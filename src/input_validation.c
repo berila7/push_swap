@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 15:56:17 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 15:48:32 by mberila          ###   ########.fr       */
+/*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
+/*   Updated: 2025/01/31 15:51:56 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-int	ft_atoi(const char *str)
+int	is_valid_number(char *str)
 {
-	int		sign;
-	long	num;
-	long	holder;
+	int	i;
 
-	holder = 0;
-	while (*str && ((*str >= 9 && *str <= 13) || *str == 32))
-		str++;
-	sign = 1;
-	if (*str == '-' || *str == '+')
+	i = 0;
+	if (!str)
+		return (0);
+	if (str[i] == '-')
+		i++;
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
-	num = 0;
-	while (ft_isdigit(*str))
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return (num * sign);
+	return (1);
+}
+
+is_within_int_limits(char *str)
+{
+	long	num;
+
+	num = ft_atoi(str);
+	if (num >= INT_MIN && num <= INT_MAX)
+		return (1);
+	return (0);
 }
