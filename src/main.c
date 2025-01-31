@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 12:44:42 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 13:42:39 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,39 @@ int main(void)
     stack_a = init_stack();
     stack_b = init_stack();
     
-    // Test push operations
-    printf("Initial state:\n");
+    // Add elements to stack A
     push_to_stack(stack_a, 1);
     push_to_stack(stack_a, 2);
     push_to_stack(stack_a, 3);
+    push_to_stack(stack_a, 4);
+    
+    // Add elements to stack B
+    push_to_stack(stack_b, 10);
+    push_to_stack(stack_b, 20);
+    push_to_stack(stack_b, 30);
+    push_to_stack(stack_b, 40);
+
+    printf("Initial state:\n");
     printf("Stack A: ");
     print_stack(stack_a);
     printf("Stack B: ");
     print_stack(stack_b);
-    
-    // Test pb
-    printf("\nTesting pb:\n");
-    pb(stack_a, stack_b);
+
+    // Test rra
+    printf("\nTesting rra:\n");
+    rra(stack_a);
     printf("Stack A: ");
     print_stack(stack_a);
+
+    // Test rrb
+    printf("\nTesting rrb:\n");
+    rrb(stack_b);
     printf("Stack B: ");
     print_stack(stack_b);
-    
-    // Test pa
-    printf("\nTesting pa:\n");
-    pa(stack_a, stack_b);
+
+    // Test rrr
+    printf("\nTesting rrr:\n");
+    rrr(stack_a, stack_b);
     printf("Stack A: ");
     print_stack(stack_a);
     printf("Stack B: ");

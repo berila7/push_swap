@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:52 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 13:11:40 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 13:44:15 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,11 @@ void	ra(t_stack *stack_a)
 	t_node	*first;
 	t_node	*last;
 
-	if (!stack_a || stack_a->top || stack_a->top->next)
+	if (!stack_a || !stack_a->top || !stack_a->top->next)
 		return ;
-	last = ft_lstlast(stack_a);
+	last = stack_a->top;
+	while (last->next)
+		last = last->next;
 	first = stack_a->top;
 	stack_a->top = first->next;
 	first->next = NULL;
@@ -111,12 +113,14 @@ void	rb(t_stack *stack_b)
 
 	if(!stack_b || !stack_b->top || !stack_b->top->next)
 		return ;
-	last = ft_lstlast(stack_b);
+	last = stack_b->top;
+	while (last->next)
+		last = last->next;
 	first = stack_b->top;
 	stack_b->top = first->next;
 	first->next = NULL;
 	last->next = first;
-	write(1, "rb\n", 1);
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack	*stack_a, t_stack *stack_b)
@@ -126,7 +130,9 @@ void	rr(t_stack	*stack_a, t_stack *stack_b)
 
 	if (stack_a && stack_a->top && stack_a->top->next)
 	{
-		last = ft_lstlast(stack_a);
+		last = stack_a->top;
+		while (last->next)
+			last = last->next;
 		first = stack_a->top;
 		stack_a->top = first->next;
 		first->next = NULL;
@@ -134,11 +140,75 @@ void	rr(t_stack	*stack_a, t_stack *stack_b)
 	}
 	if (stack_b && stack_b->top && stack_b->top->next)
 	{
-		last = ft_lstlast(stack_b);
+		last = stack_b->top;
+		while (last->next)
+			last = last->next;
 		first = stack_b->top;
 		stack_b->top = first->next;
 		first->next = NULL;
 		last->next = first;
 	}
 	write(1, "rr\n", 3);
+}
+
+void	rra(t_stack *stack_a)
+{
+	t_node	*last;
+	t_node	*second_to_last;
+
+	if (!stack_a || !stack_a->top || !stack_a->top->next)
+		return ;
+	second_to_last = stack_a->top;
+	while (second_to_last->next && second_to_last->next->next)
+		second_to_last = second_to_last->next;
+	last = second_to_last->next;
+	second_to_last->next = NULL;
+	last->next = stack_a->top;
+	stack_a->top = last;
+	write(1, "rra\n", 4);
+}
+
+void	rrb(t_stack *stack_b)
+{
+	t_node	*last;
+	t_node	*second_to_last;
+
+	if (!stack_b || !stack_b->top || !stack_b->top->next)
+		return ;
+	second_to_last = stack_b->top;
+	while (second_to_last->next && second_to_last->next->next)
+		second_to_last = second_to_last->next;
+	last = second_to_last->next;
+	second_to_last->next = NULL;
+	last->next = stack_b->top;
+	stack_b->top = last;
+	write(1, "rrb\n", 4);
+}
+
+void	rrr(t_stack *stack_a, t_stack *stack_b)
+{
+	t_node	*last;
+	t_node	*second_to_last;
+
+	if (stack_a && stack_a->top && stack_a->top->next)
+	{
+		second_to_last = stack_a->top;
+		while (second_to_last->next && second_to_last->next->next)
+			second_to_last = second_to_last->next;
+		last = second_to_last->next;
+		second_to_last->next = NULL;
+		last->next = stack_a->top;
+		stack_a->top = last;
+	}
+	if (stack_b && stack_b->top && stack_b->top->next)
+	{
+		second_to_last = stack_b->top;
+		while (second_to_last->next && second_to_last->next->next)
+			second_to_last = second_to_last->next;
+		last = second_to_last->next;
+		second_to_last->next = NULL;
+		last->next = stack_b->top;
+		stack_b->top = last;
+	}
+	write(1, "rrr\n", 4);
 }
