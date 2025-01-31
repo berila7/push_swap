@@ -6,19 +6,19 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 15:56:17 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 15:48:32 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:02:06 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		sign;
 	long	num;
-	long	holder;
 
-	holder = 0;
+	if (!str)
+		return (0);
 	while (*str && ((*str >= 9 && *str <= 13) || *str == 32))
 		str++;
 	sign = 1;

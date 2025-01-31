@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 15:51:56 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:03:50 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-is_within_int_limits(char *str)
+int	is_within_int_limits(char *str)
 {
 	long	num;
 
+	if (!str)
+		return (0);
 	num = ft_atoi(str);
-	if (num >= INT_MIN && num <= INT_MAX)
-		return (1);
-	return (0);
+	if (num > INT_MAX && num < INT_MIN)
+		return (0);
+	return (1);
 }
