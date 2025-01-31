@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:52 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 12:57:54 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 13:11:40 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,36 +91,54 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 }
 void	ra(t_stack *stack_a)
 {
-	t_node	*last_a;
-	t_node	*temp;
+	t_node	*first;
+	t_node	*last;
 
-	if (stack_a->size < 2)
+	if (!stack_a || stack_a->top || stack_a->top->next)
 		return ;
-	last_a = stack_a->top;
-	temp = stack_a->top->next;
-	while (last_a)
-		last_a = last_a->next;
-	last_a->next = stack_a->top;
-	stack_a->top = last_a;
+	last = ft_lstlast(stack_a);
+	first = stack_a->top;
+	stack_a->top = first->next;
+	first->next = NULL;
+	last->next = first;
+	write(1, "ra\n", 3);	
 }
 
 void	rb(t_stack *stack_b)
 {
-	
-	t_node	*last_a;
-	t_node	*temp;
+	t_node	*first;
+	t_node	*last;
 
-	if (stack_b->size < 2)
+	if(!stack_b || !stack_b->top || !stack_b->top->next)
 		return ;
-	last_a = stack_b->top;
-	temp = stack_b->top->next;
-	while (last_a)
-		last_a = last_a->next;
-	last_a->next = stack_b->top;
-	stack_b->top = last_a;
+	last = ft_lstlast(stack_b);
+	first = stack_b->top;
+	stack_b->top = first->next;
+	first->next = NULL;
+	last->next = first;
+	write(1, "rb\n", 1);
 }
 
 void	rr(t_stack	*stack_a, t_stack *stack_b)
 {
-	
+	t_node	*first;
+	t_node	*last;
+
+	if (stack_a && stack_a->top && stack_a->top->next)
+	{
+		last = ft_lstlast(stack_a);
+		first = stack_a->top;
+		stack_a->top = first->next;
+		first->next = NULL;
+		last->next = first;
+	}
+	if (stack_b && stack_b->top && stack_b->top->next)
+	{
+		last = ft_lstlast(stack_b);
+		first = stack_b->top;
+		stack_b->top = first->next;
+		first->next = NULL;
+		last->next = first;
+	}
+	write(1, "rr\n", 3);
 }
