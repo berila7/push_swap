@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:05:05 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:25:42 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:59:29 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ void	test_is_valid_number(void)
     printf("\"-\":          %d (expected: 0)\n", is_valid_number("-"));
     printf("\"\":           %d (expected: 0)\n", is_valid_number(""));
     printf("NULL:           %d (expected: 0)\n", is_valid_number(NULL));
+}
+
+void	test_has_duplicates(void)
+{
+    int	test1[] = {1, 2, 3, 4, 5};
+    int	test2[] = {1, 2, 2, 4, 5};
+    int	test3[] = {1, 1};
+    int	test4[] = {42};
+
+    printf("\nTesting has_duplicates:\n");
+    printf("Test1 {1,2,3,4,5}:     %d (expected: 0)\n", 
+        has_duplicates(test1, 5));
+    printf("Test2 {1,2,2,4,5}:     %d (expected: 1)\n", 
+        has_duplicates(test2, 5));
+    printf("Test3 {1,1}:           %d (expected: 1)\n", 
+        has_duplicates(test3, 2));
+    printf("Test4 {42}:            %d (expected: 0)\n", 
+        has_duplicates(test4, 1));
+    printf("NULL:                   %d (expected: 0)\n", 
+        has_duplicates(NULL, 0));
 }
 
 void	test_is_within_int_limits(void)
@@ -47,5 +67,6 @@ int	main(void)
 {
     test_is_valid_number();
     test_is_within_int_limits();
+	test_has_duplicates();
     return (0);
 }

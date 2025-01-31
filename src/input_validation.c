@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:28:35 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:58:55 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,26 @@ int	is_within_int_limits(char *str)
 	if (num > INT_MAX || num < INT_MIN)
 		return (0);
 	return (1);
+}
+
+int	has_duplicates(int *numbers, int size)
+{
+	int	i;
+	int	j;
+
+	if (!numbers || size <= 0)
+		return (0);
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (numbers[i] == numbers[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

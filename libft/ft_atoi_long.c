@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:20:19 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:22:09 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:50:00 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ long	ft_atoi_long(const char *str)
         return (0);
     while (str[i] && ft_isdigit(str[i]))
     {
-        if ((result > INT_MAX / 10) || 
-            (result == INT_MAX / 10 && (str[i] - '0') > INT_MAX % 10))
+        result = result * 10 + (str[i] - '0');
+        if ((sign == 1 && result > INT_MAX) || 
+            (sign == -1 && -result < INT_MIN))
         {
             if (sign == 1)
                 return (LONG_MAX);
             return (LONG_MIN);
         }
-        result = result * 10 + (str[i] - '0');
         i++;
     }
     return (result * sign);
