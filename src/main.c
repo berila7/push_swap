@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 12:14:34 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 12:44:42 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,31 @@ int main(void)
     // Initialize stacks
     stack_a = init_stack();
     stack_b = init_stack();
-    if (!stack_a || !stack_b)
-    {
-        printf("Stack initialization failed\n");
-        return (1);
-    }
-
-    // Test sa
-    printf("\nTesting sa:\n");
+    
+    // Test push operations
+    printf("Initial state:\n");
     push_to_stack(stack_a, 1);
     push_to_stack(stack_a, 2);
     push_to_stack(stack_a, 3);
+    printf("Stack A: ");
     print_stack(stack_a);
-    sa(stack_a);
-    print_stack(stack_a);
-
-    // Test sb
-    printf("\nTesting sb:\n");
-    push_to_stack(stack_b, 10);
-    push_to_stack(stack_b, 20);
-    push_to_stack(stack_b, 30);
+    printf("Stack B: ");
     print_stack(stack_b);
-    sb(stack_b);
-    print_stack(stack_b);
-
-    // Test ss
-    printf("\nTesting ss:\n");
+    
+    // Test pb
+    printf("\nTesting pb:\n");
+    pb(stack_a, stack_b);
+    printf("Stack A: ");
     print_stack(stack_a);
+    printf("Stack B: ");
     print_stack(stack_b);
-    ss(stack_a, stack_b);
-    printf("After ss:\n");
+    
+    // Test pa
+    printf("\nTesting pa:\n");
+    pa(stack_a, stack_b);
+    printf("Stack A: ");
     print_stack(stack_a);
+    printf("Stack B: ");
     print_stack(stack_b);
 
     // Free memory

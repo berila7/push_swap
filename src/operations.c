@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:52 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 12:34:18 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 12:57:54 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,65 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 }
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*top_a;
-	t_node	*top_b;
+	t_node	*temp;
 
-	top_a = stack_a->top;
-	top_b = stack_b->top;
-	push_to_stack(stack_a, top_b->value);
+	if (!stack_b || !stack_b->top)
+		return ;
+	temp = stack_b->top;
+	stack_b->top = stack_b->top->next;
 	stack_b->size--;
-	stack_b->top->value = NULL;
+	temp->next = stack_a->top;
+	stack_a->top = temp;
+	stack_a->size++;
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	*top_a;
-	t_node	*top_b;
+	t_node	*temp;
 
-	top_a = stack_a->top;
-	top_b = stack_b->top;
-	push_to_stack(stack_b, top_a->value);
+	if (!stack_a || !stack_a->top)
+		return ;
+	temp = stack_a->top;
+	stack_a->top = stack_a->top->next;
 	stack_a->size--;
-	stack_a->top->value = NULL;
+	temp->next = stack_b->top;
+	stack_b->top = temp;
+	stack_b->size++;
+	write(1, "pb\n", 3);
+}
+void	ra(t_stack *stack_a)
+{
+	t_node	*last_a;
+	t_node	*temp;
+
+	if (stack_a->size < 2)
+		return ;
+	last_a = stack_a->top;
+	temp = stack_a->top->next;
+	while (last_a)
+		last_a = last_a->next;
+	last_a->next = stack_a->top;
+	stack_a->top = last_a;
+}
+
+void	rb(t_stack *stack_b)
+{
+	
+	t_node	*last_a;
+	t_node	*temp;
+
+	if (stack_b->size < 2)
+		return ;
+	last_a = stack_b->top;
+	temp = stack_b->top->next;
+	while (last_a)
+		last_a = last_a->next;
+	last_a->next = stack_b->top;
+	stack_b->top = last_a;
+}
+
+void	rr(t_stack	*stack_a, t_stack *stack_b)
+{
+	
 }
