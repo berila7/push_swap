@@ -1,13 +1,13 @@
-NAME = push_swap
+NAME	=	push_swap
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
 
-SRCS = src/main.c \
-       src/stack_utils.c
-       src/operations.c
+SRCS	=	src/main.c \
+			src/stack_utils.c \
+			src/operations.c \
 
-OBJS = $(SRCS:.c=.o)
+OBJS	=	$(SRCS:.c=.o)
 
 all: $(NAME)
 
