@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 16:05:05 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:11:22 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:25:42 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	test_is_valid_number(void)
     printf("\"12a3\":       %d (expected: 0)\n", is_valid_number("12a3"));
     printf("\"-\":          %d (expected: 0)\n", is_valid_number("-"));
     printf("\"\":           %d (expected: 0)\n", is_valid_number(""));
-    printf("NULL:          %d (expected: 0)\n", is_valid_number(NULL));
+    printf("NULL:           %d (expected: 0)\n", is_valid_number(NULL));
 }
 
 void	test_is_within_int_limits(void)

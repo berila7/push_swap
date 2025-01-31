@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:03:50 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:28:35 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	is_within_int_limits(char *str)
 
 	if (!str)
 		return (0);
-	num = ft_atoi(str);
-	if (num > INT_MAX && num < INT_MIN)
+	num = ft_atoi_long(str);
+	if (num > INT_MAX || num < INT_MIN)
 		return (0);
 	return (1);
 }

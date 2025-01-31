@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:40:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 16:06:20 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 16:19:14 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-long	ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 char	*ft_strdup(const char *src);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -66,5 +66,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_swap(int *a, int *b);
+long	ft_atoi_long(const char *str);
 
 #endif
