@@ -15,6 +15,7 @@ SRCS	=	src/main.c \
 			src/input_validation.c \
 			src/fill_stack.c \
 			src/sort.c \
+			src/sort_small.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

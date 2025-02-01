@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:33:19 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 14:42:29 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 15:02:00 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	sort_two(t_stack *stack)
 		sa(stack);
 }
 
-static void	sort_three(t_stack *stack)
+void	sort_three(t_stack *stack)
 {
 	int	a;
 	int	b;
@@ -45,7 +45,7 @@ static void	sort_three(t_stack *stack)
 		rra(stack);
 }
 
-void	sort_stack(t_stack *stack_a)
+void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;
 
@@ -54,4 +54,6 @@ void	sort_stack(t_stack *stack_a)
 		sort_two(stack_a);
 	else if (size == 3)
 		sort_three(stack_a);
+	else if (size <= 5)
+		sort_small(stack_a, stack_b);
 }
