@@ -7,7 +7,8 @@ INCLUDE	=	-I includes -I libft
 
 SRCS	=	src/main.c \
 			src/stack_utils.c \
-			src/operations/push_swap.c \
+			src/operations/swap.c \
+			src/operations/push.c \
 			src/operations/rotate.c \
 			src/operations/reverse_rotate.c \
 			src/process_args.c \

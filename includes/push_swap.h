@@ -6,12 +6,12 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 10:39:15 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 11:14:51 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>

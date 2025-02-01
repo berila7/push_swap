@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 10:25:47 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 11:14:03 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_stack(t_stack *stack)
 
 t_stack	*init_stack(void)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
@@ -52,6 +52,7 @@ t_node	*create_new_node(int value)
 	node->next = NULL;
 	return (node);
 }
+
 int	push_to_stack(t_stack *stack, int value)
 {
 	t_node	*node;

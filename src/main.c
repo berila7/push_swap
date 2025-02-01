@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 10:27:21 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 11:14:15 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,33 +39,33 @@ void f(void)
 int main(int ac, char **av)
 {
 	t_stack *stack_a;
-    t_stack *stack_b;
+	t_stack *stack_b;
 	
 	atexit(f);
-    stack_a = init_stack();
-    stack_b = init_stack();
-    if (!stack_a || !stack_b)
-    {
+	stack_a = init_stack();
+	stack_b = init_stack();
+	if (!stack_a || !stack_b)
+	{
 		free_stack(stack_a);
 		free_stack(stack_b);
-        write(2, "Error\n", 6);
-        return (1);
-    }
+		write(2, "Error\n", 6);
+		return (1);
+	}
 
-    if (!process_args(ac, av, stack_a))
-    {
+	if (!process_args(ac, av, stack_a))
+	{
 		free_stack(stack_a);
 		free_stack(stack_b);
-        write(2, "Error\n", 6);
-        return (1);
-    }
+		write(2, "Error\n", 6);
+		return (1);
+	}
 
-    // Print stack for testing
-    printf("Initial stack A: ");
-    print_stack(stack_a);
+	// Print stack for testing
+	printf("Initial stack A: ");
+	print_stack(stack_a);
 
 	free_stack(stack_a);
 	free_stack(stack_b);
-    // Add cleanup code here
-    return (0);
+	// Add cleanup code here
+	return (0);
 }
