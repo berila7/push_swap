@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 14:20:14 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:42:38 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int		process_args(int ac, char **av, t_stack *stack_a);
 void	free_stack(t_stack *stack);
 int		fill_stack(t_stack *stack_a, char **numbers);
 int		is_sorted(t_stack *stack);
+void	sort_stack(t_stack *stack_a);
 
 #endif
