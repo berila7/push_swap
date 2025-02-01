@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 13:34:42 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:02:37 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ static void	free_split(char	**numbers)
 	while (numbers[i])
 		free(numbers[i++]);
 	free(numbers);
-}
-
-static int	check_empty_arg(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ')
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 static int	check_numbers(char **numbers)
@@ -52,30 +38,52 @@ static int	check_numbers(char **numbers)
 	return (1);
 }
 
+static char *join_agrs(int ac, char **av)
+{
+	char	*str;
+	char	*tmp;
+	int		i;
+
+	str = ft_strdup("");
+	i = 1;
+	while (i < ac)
+	{
+		tmp = str;
+		str = ft_strjoin(str, av[i]);
+		free(tmp);
+		if (i < ac - 1)
+		{
+			tmp = str;
+			str = ft_strjoin(str, " ");
+			free(tmp);
+		}
+		i++;
+	}
+	return (str);
+	
+}
+
 int	process_args(int ac, char **av, t_stack *stack_a)
 {
 	char	**numbers;
 	int		result;
+	char	*str;
 
 	if (ac < 2)
 		return (0);
-	if (ac == 2)
-	{
-		if (check_empty_arg(av[1]))
-			return (0);
-		numbers = ft_split(av[1], ' ');
-		if (!numbers || !numbers[0])
-		{
-			free_split(numbers);
-			return (0);
-		}
-		result = check_numbers(numbers);
-		if (result)
-			result = fill_stack(stack_a, numbers);
-		free_split(numbers);
-		return (result);
-	}
-	if (!check_numbers(av + 1))
+	str = join_agrs (ac, av);
+	if (!str)
 		return (0);
-	return (fill_stack(stack_a, av + 1));
+	numbers = ft_split(str, ' ');
+	free(str);
+	if (!numbers || !numbers[0])
+	{
+		free_split(numbers);
+		return (0);
+	}
+	result = check_numbers(numbers);
+	if (result)
+		result = fill_stack(stack_a, numbers);
+	free_split(numbers);
+	return (result);
 }
