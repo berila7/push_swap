@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 12:14:44 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:24:45 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ int main(int ac, char **av)
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
 		clean_exit(stack_a, stack_b);
+	if (!is_sorted(stack_a))
+	{
+		print_stack(stack_a);
+	}
 	print_stack(stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);

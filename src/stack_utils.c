@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 11:14:03 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:20:06 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,21 @@ int	push_to_stack(t_stack *stack, int value)
 	node->next = stack->top;
 	stack->top = node;
 	stack->size++;
+	return (1);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_node	*current;
+
+	if (!stack || !stack->top)
+		return (1);
+	current = stack->top;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
 	return (1);
 }

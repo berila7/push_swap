@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 14:02:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 14:12:17 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_numbers(char **numbers)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (numbers[i])
 	{
 		if (!is_valid_number(numbers[i]))
@@ -38,7 +38,7 @@ static int	check_numbers(char **numbers)
 	return (1);
 }
 
-static char *join_agrs(int ac, char **av)
+static char *join_args(int ac, char **av)
 {
 	char	*str;
 	char	*tmp;
@@ -71,7 +71,7 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 
 	if (ac < 2)
 		return (0);
-	str = join_agrs (ac, av);
+	str = join_args (ac, av);
 	if (!str)
 		return (0);
 	numbers = ft_split(str, ' ');
