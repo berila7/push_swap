@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 11:14:15 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 11:42:07 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ void	print_stack(t_stack *stack)
 	}
 	printf("\n");
 }
+static void	clean_exit(t_stack *stack_a, t_stack *stack_b)
+{
+	free_stack(stack_a);
+	free_stack(stack_b);
+	write (1, "Error\n", 6);
+	exit(1);
+}
+
+static t_stack	*initialize_stacks(t_stack **stack_a, t_stack **stack_b)
+{
+	*stack_a = init_stack();
+	*stack_b = init_stack();
+	if (!*stack_a || !*stack_b)
+	{
+		free_stack(*stack_a);
+		free_stack(*stack_b);
+		return (NULL);
+	}
+	return (*stack_a);
+}
 
 void f(void)
 {
@@ -42,30 +62,12 @@ int main(int ac, char **av)
 	t_stack *stack_b;
 	
 	atexit(f);
-	stack_a = init_stack();
-	stack_b = init_stack();
-	if (!stack_a || !stack_b)
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-
+	if (!initialize_stacks(&stack_a, &stack_b))
+		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
-	{
-		free_stack(stack_a);
-		free_stack(stack_b);
-		write(2, "Error\n", 6);
-		return (1);
-	}
-
-	// Print stack for testing
-	printf("Initial stack A: ");
+		clean_exit(stack_a, stack_b);
 	print_stack(stack_a);
-
 	free_stack(stack_a);
 	free_stack(stack_b);
-	// Add cleanup code here
 	return (0);
 }
