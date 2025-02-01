@@ -8,6 +8,8 @@ INCLUDE	=	-I includes -I libft
 SRCS	=	src/main.c \
 			src/stack_utils.c \
 			src/operations.c \
+			src/process_args.c \
+			src/input_validation.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

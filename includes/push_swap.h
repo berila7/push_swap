@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 17:07:19 by mberila          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:28:02 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 int		is_within_int_limits(char *str);
 int		is_valid_number(char *str);
 int		has_duplicates(int *numbers, int size);
+int		process_args(int ac, char **av);
 
 #endif
