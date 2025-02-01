@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 10:25:56 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 10:39:15 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int		is_valid_number(char *str);
 int		has_duplicates(int *numbers, int size);
 int		process_args(int ac, char **av, t_stack *stack_a);
 void	free_stack(t_stack *stack);
+int		fill_stack(t_stack *stack_a, char **numbers);
 
 #endif

@@ -7,9 +7,12 @@ INCLUDE	=	-I includes -I libft
 
 SRCS	=	src/main.c \
 			src/stack_utils.c \
-			src/operations.c \
+			src/operations/push_swap.c \
+			src/operations/rotate.c \
+			src/operations/reverse_rotate.c \
 			src/process_args.c \
 			src/input_validation.c \
+			src/fill_stack.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
