@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 10:38:16 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 13:34:42 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ static void	free_split(char	**numbers)
 	while (numbers[i])
 		free(numbers[i++]);
 	free(numbers);
+}
+
+static int	check_empty_arg(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static int	check_numbers(char **numbers)
@@ -47,9 +61,14 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 		return (0);
 	if (ac == 2)
 	{
-		numbers = ft_split(av[1], ' ');
-		if (!numbers)
+		if (check_empty_arg(av[1]))
 			return (0);
+		numbers = ft_split(av[1], ' ');
+		if (!numbers || !numbers[0])
+		{
+			free_split(numbers);
+			return (0);
+		}
 		result = check_numbers(numbers);
 		if (result)
 			result = fill_stack(stack_a, numbers);
