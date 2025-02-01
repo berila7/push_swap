@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/01/31 19:45:38 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 10:11:21 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,35 @@ void	print_stack(t_stack *stack)
 	printf("\n");
 }
 
+void f(void)
+{
+	system ("leaks push_swap");
+}
+
 int main(int ac, char **av)
 {
-	int	i;
+	t_stack *stack_a;
+    t_stack *stack_b;
+	
+	atexit(f);
+    stack_a = init_stack();
+    stack_b = init_stack();
+    if (!stack_a || !stack_b)
+    {
+        write(2, "Error\n", 6);
+        return (1);
+    }
 
-	if (!process_args(ac, av))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
-	if (ac == 2)
-		printf("Single string input: %s\n", av[1]);
-	else
-	{
-		i = 1;
-		while (i < ac)
-		{
-			printf("arg[%d]: %s\n", i, av[i]);
-			i++;
-		}
-	}
-	return (0);
+    if (!process_args(ac, av, stack_a))
+    {
+        write(2, "Error\n", 6);
+        return (1);
+    }
+
+    // Print stack for testing
+    printf("Initial stack A: ");
+    print_stack(stack_a);
+
+    // Add cleanup code here
+    return (0);
 }
