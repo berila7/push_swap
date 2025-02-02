@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:33:19 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 15:02:00 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 19:48:26 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,6 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_three(stack_a);
 	else if (size <= 5)
 		sort_small(stack_a, stack_b);
+	else
+		sort_large(stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 15:02:22 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/01 19:55:06 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
 	struct s_node	*next;
 }	t_node;	
 
@@ -29,6 +30,7 @@ typedef struct s_stack
 {
 	t_node	*top;
 	int		size;
+	int		op_count;
 }	t_stack;
 
 t_stack	*init_stack(void);
@@ -55,5 +57,6 @@ int		is_sorted(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
+void	sort_large(t_stack *stack_a, t_stack *stack_b);
 
 #endif

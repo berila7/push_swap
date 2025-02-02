@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 15:12:16 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:08:21 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ static t_stack	*initialize_stacks(t_stack **stack_a, t_stack **stack_b)
 	return (*stack_a);
 }
 
-void	f(void)
-{
-	system ("leaks push_swap");
-}
+// void	f(void)
+// {
+// 	system ("leaks push_swap");
+// }
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	atexit(f);
+	// atexit(f);
 	if (!initialize_stacks(&stack_a, &stack_b))
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
@@ -70,7 +70,9 @@ int	main(int ac, char **av)
 	if (!is_sorted(stack_a))
 	{
 		sort_stack(stack_a, stack_b);
+		printf("%d", stack_a->op_count);
 	}
+	print_stack(stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

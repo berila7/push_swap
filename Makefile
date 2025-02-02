@@ -16,13 +16,14 @@ SRCS	=	src/main.c \
 			src/fill_stack.c \
 			src/sort.c \
 			src/sort_small.c \
+			src/sort_larg.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	make -C libft
+	@make -C libft
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
