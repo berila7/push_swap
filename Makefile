@@ -17,6 +17,7 @@ SRCS	=	src/main.c \
 			src/sort.c \
 			src/sort_small.c \
 			src/sort_larg.c \
+			src/cleanup.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

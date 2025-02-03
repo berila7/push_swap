@@ -6,21 +6,11 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 15:08:45 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:17:55 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	free_split(char	**numbers)
-{
-	int	i;
-
-	i = 0;
-	while (numbers[i])
-		free(numbers[i++]);
-	free(numbers);
-}
 
 static int	check_numbers(char **numbers)
 {

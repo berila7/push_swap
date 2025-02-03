@@ -6,33 +6,11 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 19:49:13 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:14:18 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static int	get_max_bits(t_stack *stack)
-{
-	t_node	*current;
-	int		max_index;
-	int		max_bits;
-
-	if (!stack->top)
-		return (0);
-	current = stack->top;
-	max_index = current->index;
-	while (current)
-	{
-		if (current->index > max_index)
-			max_index = current->index;
-		current = current->next;
-	}
-	max_bits = 0;
-	while ((max_index >> max_bits) != 0)
-		max_bits++;
-	return (max_bits);
-}
 
 static void	normalize_stack(t_stack *stack)
 {
@@ -56,30 +34,97 @@ static void	normalize_stack(t_stack *stack)
 	}
 }
 
-void	sort_large(t_stack *stack_a, t_stack *stack_b)
+static int	get_target_position(t_stack *stack, int	start, int end)
 {
-	int	bit;
-	int	j;
-	int	size;
-	int	max_bits;
+	t_node	*current;
+	int		pos;
 
-	normalize_stack(stack_a);
-	max_bits = get_max_bits(stack_a);
-	size = stack_a->size;
-	bit = 0;
-	while (bit < max_bits)
+	pos = 0;
+	current = stack->top;
+	while (current)
 	{
-		j = 0;
-		while (j < size)
-		{
-			if ((stack_a->top->index >> bit) & 1)
-				ra(stack_a);
-			else
-				pb(stack_a, stack_b);
-			j++;
-		}
-		while (stack_b->size > 0)
-			pa(stack_a, stack_b);
-		bit++;
+		if (current->index >= start && current->index <=  end)
+			return (pos);
+		pos++;
+		current = current->next;
 	}
+	return (-1);
+}
+
+static void	push_chunk_to_b(t_stack *a, t_stack *b, int start, int end)
+{
+	int	pos;
+	int	mid;
+
+	mid = start + ((end - start) / 2);
+	while (a->size > 0)
+	{
+		pos = get_target_position(a, start, end);
+		if (pos == -1)
+			break ;
+		if (pos <= a->size / 2)
+		{
+			while (pos--)
+				ra(a);
+		}
+		else
+			while (pos++ < a->size)
+				rra(a);
+		pb(a, b);
+		if (b->top->index < mid)
+			rb(b);
+	}
+}
+
+static void	push_back_to_a(t_stack *a, t_stack *b)
+{
+	int	pos;
+	int	size;
+
+	while (b->size > 0)
+	{
+		pos = find_max_pos(b);
+		size = b->size;
+		if (pos <= size / 2)
+		{
+			while (pos--)
+				rb(b);
+		}
+		else
+		{
+			while (pos++ < size)
+			{
+				rrb(b);
+			}
+		}
+		pa (a, b);
+	}
+}
+
+void	sort_large(t_stack *a, t_stack *b)
+{
+	int	size;
+	int	chunk_size;
+	int	chunk_start;
+	int	chunks;
+	int	i;
+
+	normalize_stack(a);
+	size = a->size;
+	if ((size <= 100))
+		chunks = 5;
+	else
+		chunks = 11;
+	chunk_size = size / chunks;
+	i = 0;
+	chunk_start = 0;
+	while (i < chunks)
+	{
+		push_chunk_to_b(a, b, chunk_start, chunk_start + chunk_size - 1);
+		chunk_start += chunk_size;
+		i++;
+	}
+	if (a->size > 0)
+		push_chunk_to_b(a, b, chunk_start, size - 1);
+	push_back_to_a(a, b);
 }

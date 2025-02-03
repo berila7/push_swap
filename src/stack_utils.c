@@ -6,28 +6,11 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 14:20:06 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:15:50 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	free_stack(t_stack *stack)
-{
-	t_node	*current;
-	t_node	*next;
-
-	if (!stack)
-		return ;
-	current = stack->top;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	free(stack);
-}
 
 t_stack	*init_stack(void)
 {
@@ -82,4 +65,27 @@ int	is_sorted(t_stack *stack)
 		current = current->next;
 	}
 	return (1);
+}
+int	find_max_pos(t_stack *stack)
+{
+	t_node	*current;
+	int		max_index;
+	int		pos;
+	int		max_pos;
+
+	current = stack->top;
+	max_index = current->index;
+	pos = 0;
+	max_pos = 0;
+	while (current)
+	{
+		if (current->index > max_index)
+		{
+			max_index = current->index;
+			max_pos = pos;
+		}
+		pos++;
+		current = current->next;
+	}
+	return (max_pos);
 }
