@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/03 11:15:50 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:23:17 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
 int	find_max_pos(t_stack *stack)
 {
 	t_node	*current;

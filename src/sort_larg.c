@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/03 11:14:18 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:24:22 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	normalize_stack(t_stack *stack)
 	}
 }
 
-static int	get_target_position(t_stack *stack, int	start, int end)
+static int	get_target_position(t_stack *stack, int start, int end)
 {
 	t_node	*current;
 	int		pos;
@@ -43,7 +43,7 @@ static int	get_target_position(t_stack *stack, int	start, int end)
 	current = stack->top;
 	while (current)
 	{
-		if (current->index >= start && current->index <=  end)
+		if (current->index >= start && current->index <= end)
 			return (pos);
 		pos++;
 		current = current->next;
