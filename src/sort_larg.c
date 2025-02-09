@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/03 11:24:22 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/09 11:37:20 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ void	sort_large(t_stack *a, t_stack *b)
 	normalize_stack(a);
 	size = a->size;
 	if ((size <= 100))
-		chunks = 5;
+		chunks = 16;
 	else
-		chunks = 11;
+		chunks = 32;
 	chunk_size = size / chunks;
 	i = 0;
 	chunk_start = 0;
