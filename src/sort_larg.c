@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/09 16:24:30 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 10:06:43 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	push_chunk_to_b(t_stack *a, t_stack *b, int start, int end)
 {
 	int	pos;
 	int	mid;
+	// int b_pos;
 
 	mid = start + ((end - start) / 2);
 	while (a->size > 0)
@@ -65,7 +66,12 @@ static void	push_chunk_to_b(t_stack *a, t_stack *b, int start, int end)
 		if (pos <= a->size / 2)
 		{
 			while (pos--)
-				ra(a);
+			{
+				if (b->top && b->top->index < mid)
+					rr(a, b);
+				else
+					ra(a);
+			}
 		}
 		else
 			while (pos++ < a->size)
@@ -112,7 +118,7 @@ void	sort_large(t_stack *a, t_stack *b)
 	normalize_stack(a);
 	size = a->size;
 	if ((size <= 100))
-		chunks = 6;
+		chunks = 5;
 	else
 		chunks = 11;
 	chunk_size = size / chunks;
