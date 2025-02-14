@@ -6,24 +6,30 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/03 11:17:55 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:09:18 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	check_numbers(char **numbers)
+static int	check_numbers(char **numbers, int **temp_array, int count)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (numbers[i])
 	{
-		if (!is_valid_number(numbers[i]))
-			return (0);
-		if (!is_within_int_limits(numbers[i]))
+		if (!is_valid_number(numbers[i]) 
+			|| !is_within_int_limits(numbers[i]))
 			return (0);
 		i++;
+	}
+	if (!convert_to_array(numbers, temp_array, count))
+		return (0);
+	if (has_duplicates(*temp_array, count))
+	{
+		free(temp_array);
+		return (0);
 	}
 	return (1);
 }
@@ -57,6 +63,8 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 	char	**numbers;
 	int		result;
 	char	*str;
+	int		**temp_array;
+	int		count;
 
 	if (ac < 2)
 		return (0);
@@ -70,9 +78,10 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 		free_split(numbers);
 		return (0);
 	}
-	result = check_numbers(numbers);
+	count = 0;
+	result = check_numbers(numbers, &temp_array, &count);
 	if (result)
-		result = fill_stack(stack_a, numbers);
+		result = fill_stack(stack_a, temp_array, count);
 	free_split(numbers);
 	return (result);
 }

@@ -6,13 +6,13 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:33:58 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 11:14:34 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:05:16 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	convert_to_array(char **numbers, int **arr, int *count)
+int	convert_to_array(char **numbers, int **arr, int *count)
 {
 	int	i;
 
@@ -45,19 +45,10 @@ static int	push_numbers(t_stack *stack, int *numbers, int count)
 	return (1);
 }
 
-int	fill_stack(t_stack *stack_a, char **numbers)
+int	fill_stack(t_stack *stack_a, int **temp_array, int count)
 {
 	int	result;
-	int	*temp_array;
-	int	count;
 
-	if (!convert_to_array(numbers, &temp_array, &count))
-		return (0);
-	if (has_duplicates(temp_array, count))
-	{
-		free(temp_array);
-		return (0);
-	}
 	result = push_numbers(stack_a, temp_array, count);
 	free(temp_array);
 	return (result);
