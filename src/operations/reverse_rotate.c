@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:56:18 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 19:56:04 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 09:51:56 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	rra(t_stack *stack_a)
 	second_to_last->next = NULL;
 	last->next = stack_a->top;
 	stack_a->top = last;
-	stack_a->op_count++;
 	write(1, "rra\n", 4);
 }
 
@@ -44,7 +43,6 @@ void	rrb(t_stack *stack_b)
 	second_to_last->next = NULL;
 	last->next = stack_b->top;
 	stack_b->top = last;
-	stack_b->op_count++;
 	write(1, "rrb\n", 4);
 }
 
@@ -52,6 +50,5 @@ void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
-	stack_a->op_count++;
 	write(1, "rrr\n", 4);
 }

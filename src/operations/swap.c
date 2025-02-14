@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:53:27 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 19:56:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 09:52:09 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sa(t_stack *stack_a)
 	first = stack_a->top;
 	second = first->next;
 	ft_swap(&(first->value), &(second->value));
-	stack_a->op_count++;
 	write(1, "sa\n", 3);
 }
 
@@ -36,7 +35,6 @@ void	sb(t_stack *stack_b)
 	first = stack_b->top;
 	second = first->next;
 	ft_swap(&(first->value), &(second->value));
-	stack_b->op_count++;
 	write(1, "sb\n", 3);
 }
 
@@ -44,6 +42,5 @@ void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	stack_a->op_count++;
 	write(1, "ss\n", 3);
 }

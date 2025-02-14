@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/03 11:18:17 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 09:51:21 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_stack
 {
 	t_node	*top;
 	int		size;
-	int		op_count;
 }	t_stack;
 
 t_stack	*init_stack(void);

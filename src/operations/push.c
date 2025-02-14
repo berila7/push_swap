@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 11:07:58 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/01 19:55:38 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 09:51:48 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	temp->next = stack_a->top;
 	stack_a->top = temp;
 	stack_a->size++;
-	stack_a->op_count++;
 	write(1, "pa\n", 3);
 }
 
@@ -40,6 +39,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 	temp->next = stack_b->top;
 	stack_b->top = temp;
 	stack_b->size++;
-	stack_a->op_count++;
 	write(1, "pb\n", 3);
 }

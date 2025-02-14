@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/13 17:22:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 09:51:36 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	main(int ac, char **av)
 	{
 		sort_stack(stack_a, stack_b);
 	}
-	// printf("%d", stack_a->op_count + stack_b->op_count);
-	// print_stack(stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
