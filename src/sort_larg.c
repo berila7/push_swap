@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 10:06:43 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 10:14:05 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,7 @@ static void	push_chunk_to_b(t_stack *a, t_stack *b, int start, int end)
 		if (pos <= a->size / 2)
 		{
 			while (pos--)
-			{
-				if (b->top && b->top->index < mid)
-					rr(a, b);
-				else
-					ra(a);
-			}
+				ra(a);
 		}
 		else
 			while (pos++ < a->size)
@@ -121,12 +116,14 @@ void	sort_large(t_stack *a, t_stack *b)
 		chunks = 5;
 	else
 		chunks = 11;
-	chunk_size = size / chunks;
+	chunk_size = size / chunks + (size % chunks != 0);
 	i = 0;
 	chunk_start = 0;
-	while (i < chunks)
+	while (i < chunks && chunk_start < size)
 	{
-		push_chunk_to_b(a, b, chunk_start, chunk_start + chunk_size - 1);
+		push_chunk_to_b(a, b, chunk_start,
+			 chunk_start + chunk_size - 1 < size - 1 ?
+			 chunk_start + chunk_size - 1 : size - 1);
 		chunk_start += chunk_size;
 		i++;
 	}
