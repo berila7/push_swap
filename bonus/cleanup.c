@@ -1,46 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_stack.c                                       :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 10:33:58 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 17:14:50 by mberila          ###   ########.fr       */
+/*   Created: 2025/02/03 11:07:12 by mberila           #+#    #+#             */
+/*   Updated: 2025/02/03 11:23:31 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	convert_to_array(char **numbers, int **arr, int *count)
+void	free_stack(t_stack *stack)
 {
-	int	i;
+	t_node	*current;
+	t_node	*next;
 
-	while (numbers[*count])
-		(*count)++;
-	*arr = malloc(sizeof(int) * (*count));
-	if (!*arr)
-		return (0);
-	i = 0;
-	while (numbers[i])
+	if (!stack)
+		return ;
+	current = stack->top;
+	while (current)
 	{
-		(*arr)[i] = ft_atoi(numbers[i]);
-		i++;
+		next = current->next;
+		free(current);
+		current = next;
 	}
-	return (1);
+	free(stack);
 }
 
-int	fill_stack(t_stack *stack_a, int *temp_array, int count)
+void	free_split(char	**numbers)
 {
-	int	result;
 	int	i;
 
-	i = count - 1;
-	while (i >= 0)
-	{
-		result = push_to_stack(stack_a, temp_array[i]);
-		i--;
-	}
-	free(temp_array);
-	return (result);
+	i = 0;
+	while (numbers[i])
+		free(numbers[i++]);
+	free(numbers);
 }
