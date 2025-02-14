@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:12:49 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 10:14:05 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/14 10:50:25 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,101 +33,100 @@ static void	normalize_stack(t_stack *stack)
 		current = current->next;
 	}
 }
-
-static int	get_target_position(t_stack *stack, int start, int end)
+static void	get_next_pos(t_stack *a, int min, int max, int *pos)
 {
 	t_node	*current;
-	int		pos;
+	int		i;
 
-	pos = 0;
-	current = stack->top;
+	i = 0;
+	*pos = -1;
+	current = a->top;
 	while (current)
 	{
-		if (current->index >= start && current->index <= end)
-			return (pos);
-		pos++;
+		if (current->index >= min && current->index <= max)
+		{
+			*pos = i;
+			break ;
+		}
+		i++;
 		current = current->next;
 	}
-	return (-1);
 }
 
-static void	push_chunk_to_b(t_stack *a, t_stack *b, int start, int end)
+static void	handle_rotation(t_stack *a, t_stack *b, int pos, int mid)
+{
+	if (pos <= a->size / 2)
+	{
+		while (pos--)
+			ra(a);
+	}
+	else
+	{
+		while (pos++ < a->size)
+			rra(a);
+	}
+	pb(a, b);
+	if (b->top->index < mid)
+		rb(b);
+}
+
+static void	process_chunk(t_stack *a, t_stack *b, int start, int chunk_size)
 {
 	int	pos;
+	int	end;
+	int	pushed;
 	int	mid;
-	// int b_pos;
 
-	mid = start + ((end - start) / 2);
-	while (a->size > 0)
+	end = start + chunk_size - 1;
+	mid = start + (chunk_size / 2);
+	pushed = 0;
+	while (pushed < chunk_size && a->size > 0)
 	{
-		pos = get_target_position(a, start, end);
+		get_next_pos(a, start, end, &pos);
 		if (pos == -1)
 			break ;
-		if (pos <= a->size / 2)
-		{
-			while (pos--)
-				ra(a);
-		}
-		else
-			while (pos++ < a->size)
-				rra(a);
-		pb(a, b);
-		if (b->top->index < mid)
-			rb(b);
+		handle_rotation(a, b, pos, mid);
+		pushed++;
 	}
 }
 
-static void	push_back_to_a(t_stack *a, t_stack *b)
+static void	push_chunks(t_stack *a, t_stack *b)
 {
-	int	pos;
-	int	size;
+	int	chunk_size;
+	int	start;
+	int	total_chunks;
+	int	i;
 
-	while (b->size > 0)
+	if (a->size <= 100)
+		chunk_size = a->size / 5;
+	else
+		chunk_size = a->size / 11;
+	total_chunks = (a->size + chunk_size - 1) / chunk_size;
+	i = 0;
+	start = 0;
+	while (i < total_chunks)
 	{
-		pos = find_max_pos(b);
-		size = b->size;
-		if (pos <= size / 2)
-		{
-			while (pos--)
-				rb(b);
-		}
-		else
-		{
-			while (pos++ < size)
-			{
-				rrb(b);
-			}
-		}
-		pa (a, b);
+		process_chunk(a, b, start, chunk_size);
+		start += chunk_size;
+		i++;
 	}
 }
 
 void	sort_large(t_stack *a, t_stack *b)
 {
-	int	size;
-	int	chunk_size;
-	int	chunk_start;
-	int	chunks;
-	int	i;
+	int	pos;
 
 	normalize_stack(a);
-	size = a->size;
-	if ((size <= 100))
-		chunks = 5;
-	else
-		chunks = 11;
-	chunk_size = size / chunks + (size % chunks != 0);
-	i = 0;
-	chunk_start = 0;
-	while (i < chunks && chunk_start < size)
+	push_chunks(a, b);
+	while (b->size > 0)
 	{
-		push_chunk_to_b(a, b, chunk_start,
-			 chunk_start + chunk_size - 1 < size - 1 ?
-			 chunk_start + chunk_size - 1 : size - 1);
-		chunk_start += chunk_size;
-		i++;
+		pos = find_max_pos(b);
+		if (pos <= b->size / 2)
+			while (pos--)
+				rb(b);
+		else
+			while (pos++ < b->size)
+				rrb(b);
+		pa(a, b);
 	}
-	if (a->size > 0)
-		push_chunk_to_b(a, b, chunk_start, size - 1);
-	push_back_to_a(a, b);
 }
