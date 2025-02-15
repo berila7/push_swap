@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker_bonus.h"
 
 void	rra(t_stack *stack_a)
 {
@@ -26,7 +26,6 @@ void	rra(t_stack *stack_a)
 	second_to_last->next = NULL;
 	last->next = stack_a->top;
 	stack_a->top = last;
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *stack_b)
@@ -43,12 +42,10 @@ void	rrb(t_stack *stack_b)
 	second_to_last->next = NULL;
 	last->next = stack_b->top;
 	stack_b->top = last;
-	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
-	write(1, "rrr\n", 4);
 }

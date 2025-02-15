@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 int	is_valid_number(char *str)
 {
@@ -30,6 +30,16 @@ int	is_valid_number(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int    is_valid_instruction(char *line)
+{
+    return (ft_strcmp(line, "sa\n") == 0 || ft_strcmp(line, "sb\n") == 0 ||
+            ft_strcmp(line, "ss\n") == 0 || ft_strcmp(line, "pa\n") == 0 ||
+            ft_strcmp(line, "pb\n") == 0 || ft_strcmp(line, "ra\n") == 0 ||
+            ft_strcmp(line, "rb\n") == 0 || ft_strcmp(line, "rr\n") == 0 ||
+            ft_strcmp(line, "rra\n") == 0 || ft_strcmp(line, "rrb\n") == 0 ||
+            ft_strcmp(line, "rrr\n") == 0);
 }
 
 int	is_within_int_limits(char *str)

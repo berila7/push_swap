@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 static void	clean_exit(t_stack *stack_a, t_stack *stack_b)
 {
@@ -48,8 +48,11 @@ int	main(int ac, char **av)
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
 		clean_exit(stack_a, stack_b);
-	if (!is_sorted(stack_a))
-		sort_stack(stack_a, stack_b);
+	process_operations(stack_a, stack_b);
+	if (is_sorted(stack_a) && stack_b->size == 0)
+		write(1, "OK\n",3);
+	else
+		write(1, "KO\n",3);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

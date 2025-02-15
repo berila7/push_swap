@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_BONUS_H
-# define PUSH_SWAP_BONUS_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
 # include "../lib/libft/libft.h"
+# include "../lib/get_next_line/get_next_line.h"
+
+typedef struct s_instruction
+{
+    char                *operation;
+    struct s_instruction *next;
+}   t_instruction;
 
 typedef struct s_node
 {
@@ -43,7 +50,9 @@ int		process_args(int ac, char **av, t_stack *stack_a);
 int		fill_stack(t_stack *stack_a, int *temp_array, int count);
 int		is_sorted(t_stack *stack);
 int		find_max_pos(t_stack *stack);
+int     execute_operation(t_stack *a, t_stack *b, char *op);
 
+void    process_operations(t_stack *a, t_stack *b);
 void	free_stack(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack);

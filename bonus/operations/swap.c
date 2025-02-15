@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker_bonus.h"
 
 void	sa(t_stack *stack_a)
 {
@@ -22,7 +22,6 @@ void	sa(t_stack *stack_a)
 	first = stack_a->top;
 	second = first->next;
 	ft_swap(&(first->value), &(second->value));
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack_b)
@@ -35,12 +34,10 @@ void	sb(t_stack *stack_b)
 	first = stack_b->top;
 	second = first->next;
 	ft_swap(&(first->value), &(second->value));
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	write(1, "ss\n", 3);
 }

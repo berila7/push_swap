@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker_bonus.h"
 
 void	free_stack(t_stack *stack)
 {
@@ -37,4 +37,17 @@ void	free_split(char	**numbers)
 	while (numbers[i])
 		free(numbers[i++]);
 	free(numbers);
+}
+
+void    free_instructions(t_instruction *head)
+{
+    t_instruction    *temp;
+
+    while (head)
+    {
+        temp = head;
+        head = head->next;
+        free(temp->operation);
+        free(temp);
+    }
 }
