@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 14:44:05 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/15 09:55:11 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,23 @@ typedef struct s_stack
 
 t_stack	*init_stack(void);
 t_node	*create_new_node(int value);
+
 int		push_to_stack(t_stack *stack, int value);
+int		is_within_int_limits(char *str);
+int		is_valid_number(char *str);
+int		has_duplicates(int *numbers, int size);
+int		process_args(int ac, char **av, t_stack *stack_a);
+int		fill_stack(t_stack *stack_a, int *temp_array, int count);
+int		is_sorted(t_stack *stack);
+int		find_max_pos(t_stack *stack);
+
+void	free_stack(t_stack *stack);
+void	sort_stack(t_stack *stack_a, t_stack *stack_b);
+void	sort_three(t_stack *stack);
+void	sort_small(t_stack *stack_a, t_stack *stack_b);
+void	sort_large(t_stack *a, t_stack *b);
+void	free_split(char	**numbers);
+
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
@@ -46,18 +62,5 @@ void	rr(t_stack	*stack_a, t_stack *stack_b);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
-int		is_within_int_limits(char *str);
-int		is_valid_number(char *str);
-int		has_duplicates(int *numbers, int size);
-int		process_args(int ac, char **av, t_stack *stack_a);
-void	free_stack(t_stack *stack);
-int		fill_stack(t_stack *stack_a, char **numbers);
-int		is_sorted(t_stack *stack);
-void	sort_stack(t_stack *stack_a, t_stack *stack_b);
-void	sort_three(t_stack *stack);
-void	sort_small(t_stack *stack_a, t_stack *stack_b);
-void	sort_large(t_stack *a, t_stack *b);
-int		find_max_pos(t_stack *stack);
-void	free_split(char	**numbers);
 
 #endif
