@@ -22,7 +22,7 @@ static char	*configure_line(char *line)
 		i++;
 	if (line[i] == 0 || line[1] == 0)
 		return (NULL);
-	new_remainder = ft_substr(line, i + 1, ft_strlen(line) - i);
+	new_remainder = ft_sub(line, i + 1, ft_len(line) - i);
 	if (*new_remainder == 0)
 	{
 		free(new_remainder);
@@ -50,9 +50,9 @@ static char	*get_line(int fd, char *remainder, char *buffer)
 			break ;
 		buffer[bytes_read] = 0;
 		if (!remainder)
-			remainder = ft_strdup("");
+			remainder = ft_dup("");
 		tmp_remainder = remainder;
-		remainder = ft_strjoin(tmp_remainder, buffer);
+		remainder = ft_join(tmp_remainder, buffer);
 		free(tmp_remainder);
 		tmp_remainder = NULL;
 		if (find_new_line(buffer) != -1)

@@ -26,7 +26,7 @@ int	find_new_line(char *str)
 	return (-1);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_dup(char *s1)
 {
 	char			*dest;
 	unsigned int	i;
@@ -44,7 +44,7 @@ char	*ft_strdup(char *s1)
 	return (dest);
 }
 
-size_t	ft_strlen(char *s)
+size_t	ft_len(char *s)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_sub(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*str;
@@ -63,8 +63,8 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start > ft_strlen(s))
 		return (malloc(1));
-	if (len > ft_strlen(s + start))
-		len = ft_strlen(s + start);
+	if (len > ft_len(s + start))
+		len = ft_len(s + start);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -78,13 +78,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_join(char *s1, char *s2)
 {
 	char			*res;
 	unsigned int	i;
 	unsigned int	j;
 
-	res = (char *) malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	res = (char *) malloc((ft_len(s1) + ft_len(s2) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	i = 0;

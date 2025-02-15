@@ -20,10 +20,10 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strdup(char *s);
-size_t	ft_strlen(char *s);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_dup(char *s);
+size_t	ft_len(char *s);
+char	*ft_sub(char *s, unsigned int start, size_t len);
+char	*ft_join(char *s1, char *s2);
 int		find_new_line(char *str);
 
 #endif

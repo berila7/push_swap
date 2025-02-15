@@ -1,5 +1,22 @@
 #include "../includes/checker_bonus.h"
 
+static t_instruction    *new_instruction(char *operation)
+{
+    t_instruction    *new;
+
+    new = malloc(sizeof(t_instruction));
+    if (!new)
+        return (NULL);
+    new->operation = ft_strdup(operation);
+    if (!new->operation)
+    {
+        free(new);
+        return (NULL);
+    }
+    new->next = NULL;
+    return (new);
+}
+
 static t_instruction    *read_instructions(void)
 {
     t_instruction    *head;
@@ -86,3 +103,4 @@ int    execute_operation(t_stack *a, t_stack *b, char *op)
         return (0);
     return (1);
 }
+

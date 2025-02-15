@@ -44,6 +44,8 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 
 	atexit(f);
+	if (ac < 2)
+    	return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))

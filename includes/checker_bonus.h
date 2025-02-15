@@ -41,6 +41,7 @@ typedef struct s_stack
 
 t_stack	*init_stack(void);
 t_node	*create_new_node(int value);
+t_instruction    *new_instruction(char *operation);
 
 int		push_to_stack(t_stack *stack, int value);
 int		is_within_int_limits(char *str);
@@ -51,13 +52,13 @@ int		fill_stack(t_stack *stack_a, int *temp_array, int count);
 int		is_sorted(t_stack *stack);
 int		find_max_pos(t_stack *stack);
 int     execute_operation(t_stack *a, t_stack *b, char *op);
+int     is_valid_instruction(char *line);
+int    convert_to_array(char **numbers, int **arr, int *count);
 
+void    free_instructions(t_instruction *head);
 void    process_operations(t_stack *a, t_stack *b);
 void	free_stack(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
-void	sort_three(t_stack *stack);
-void	sort_small(t_stack *stack_a, t_stack *stack_b);
-void	sort_large(t_stack *a, t_stack *b);
 void	free_split(char	**numbers);
 
 void	sa(t_stack *stack_a);
