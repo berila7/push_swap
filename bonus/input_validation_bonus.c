@@ -34,12 +34,14 @@ int	is_valid_number(char *str)
 
 int    is_valid_instruction(char *line)
 {
-    return (ft_strcmp(line, "sa\n") == 0 || ft_strcmp(line, "sb\n") == 0 ||
-            ft_strcmp(line, "ss\n") == 0 || ft_strcmp(line, "pa\n") == 0 ||
-            ft_strcmp(line, "pb\n") == 0 || ft_strcmp(line, "ra\n") == 0 ||
-            ft_strcmp(line, "rb\n") == 0 || ft_strcmp(line, "rr\n") == 0 ||
-            ft_strcmp(line, "rra\n") == 0 || ft_strcmp(line, "rrb\n") == 0 ||
-            ft_strcmp(line, "rrr\n") == 0);
+    if (!line)
+        return (0);
+    return (ft_strncmp(line, "sa\n", 3) == 0 || ft_strncmp(line, "sb\n", 3) == 0 ||
+            ft_strncmp(line, "ss\n", 3) == 0 || ft_strncmp(line, "pa\n", 3) == 0 ||
+            ft_strncmp(line, "pb\n", 3) == 0 || ft_strncmp(line, "ra\n", 3) == 0 ||
+            ft_strncmp(line, "rb\n", 3) == 0 || ft_strncmp(line, "rr\n", 3) == 0 ||
+            ft_strncmp(line, "rra\n", 4) == 0 || ft_strncmp(line, "rrb\n", 4) == 0 ||
+            ft_strncmp(line, "rrr\n", 4) == 0);
 }
 
 int	is_within_int_limits(char *str)

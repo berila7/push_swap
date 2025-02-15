@@ -1,6 +1,6 @@
 #include "../includes/checker_bonus.h"
 
-static t_instruction    *new_instruction(char *operation)
+t_instruction    *new_instruction(char *operation)
 {
     t_instruction    *new;
 
@@ -77,27 +77,27 @@ void    process_operations(t_stack *a, t_stack *b)
 
 int    execute_operation(t_stack *a, t_stack *b, char *op)
 {
-    if (ft_strcmp(op, "sa\n") == 0)
+    if (ft_strncmp(op, "sa\n", 3) == 0)
         sa(a);
-    else if (ft_strcmp(op, "sb\n") == 0)
+    else if (ft_strncmp(op, "sb\n", 3) == 0)
         sb(b);
-    else if (ft_strcmp(op, "ss\n") == 0)
+    else if (ft_strncmp(op, "ss\n", 3) == 0)
         ss(a, b);
-    else if (ft_strcmp(op, "pa\n") == 0)
+    else if (ft_strncmp(op, "pa\n", 3) == 0)
         pa(a, b);
-    else if (ft_strcmp(op, "pb\n") == 0)
+    else if (ft_strncmp(op, "pb\n", 3) == 0)
         pb(a, b);
-    else if (ft_strcmp(op, "ra\n") == 0)
+    else if (ft_strncmp(op, "ra\n", 3) == 0)
         ra(a);
-    else if (ft_strcmp(op, "rb\n") == 0)
+    else if (ft_strncmp(op, "rb\n", 3) == 0)
         rb(b);
-    else if (ft_strcmp(op, "rr\n") == 0)
+    else if (ft_strncmp(op, "rr\n", 3) == 0)
         rr(a, b);
-    else if (ft_strcmp(op, "rra\n") == 0)
+    else if (ft_strncmp(op, "rra\n", 4) == 0)
         rra(a);
-    else if (ft_strcmp(op, "rrb\n") == 0)
+    else if (ft_strncmp(op, "rrb\n", 4) == 0)
         rrb(b);
-    else if (ft_strcmp(op, "rrr\n") == 0)
+    else if (ft_strncmp(op, "rrr\n", 4) == 0)
         rrr(a, b);
     else
         return (0);

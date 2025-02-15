@@ -12,7 +12,7 @@
 
 #include "../includes/checker_bonus.h"
 
-static void	clean_exit(t_stack *stack_a, t_stack *stack_b)
+void	clean_exit(t_stack *stack_a, t_stack *stack_b)
 {
 	free_stack(stack_a);
 	free_stack(stack_b);

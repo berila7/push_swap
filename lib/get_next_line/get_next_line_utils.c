@@ -31,7 +31,7 @@ char	*ft_dup(char *s1)
 	char			*dest;
 	unsigned int	i;
 
-	dest = (char *) malloc(ft_strlen(s1) + 1);
+	dest = (char *) malloc(ft_len(s1) + 1);
 	if (!dest)
 		return (NULL);
 	i = 0;
@@ -61,7 +61,7 @@ char	*ft_sub(char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if (start > ft_len(s))
 		return (malloc(1));
 	if (len > ft_len(s + start))
 		len = ft_len(s + start);

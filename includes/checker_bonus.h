@@ -44,23 +44,30 @@ t_node	*create_new_node(int value);
 t_instruction    *new_instruction(char *operation);
 
 int		push_to_stack(t_stack *stack, int value);
-int		is_within_int_limits(char *str);
-int		is_valid_number(char *str);
-int		has_duplicates(int *numbers, int size);
 int		process_args(int ac, char **av, t_stack *stack_a);
 int		fill_stack(t_stack *stack_a, int *temp_array, int count);
 int		is_sorted(t_stack *stack);
 int		find_max_pos(t_stack *stack);
-int     execute_operation(t_stack *a, t_stack *b, char *op);
-int     is_valid_instruction(char *line);
-int    convert_to_array(char **numbers, int **arr, int *count);
-
-void    free_instructions(t_instruction *head);
-void    process_operations(t_stack *a, t_stack *b);
-void	free_stack(t_stack *stack);
+int		convert_to_array(char **numbers, int **arr, int *count);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
-void	free_split(char	**numbers);
 
+/* Validation */
+int		has_duplicates(int *numbers, int size);
+int		is_within_int_limits(char *str);
+int		is_valid_number(char *str);
+int     is_valid_instruction(char *line);
+
+/* Instructions handling */
+void    process_operations(t_stack *a, t_stack *b);
+int     execute_operation(t_stack *a, t_stack *b, char *op);
+void    free_instructions(t_instruction *head);
+
+/* Memory management */
+void	free_stack(t_stack *stack);
+void	free_split(char	**numbers);
+void	clean_exit(t_stack *stack_a, t_stack *stack_b);
+
+/* Stack operations */
 void	sa(t_stack *stack_a);
 void	sb(t_stack *stack_b);
 void	ss(t_stack *stack_a, t_stack *stack_b);
