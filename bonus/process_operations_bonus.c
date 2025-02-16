@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 18:01:27 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 15:45:54 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/16 16:09:05 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_instruction    *new_instruction(char *operation)
 	return (new);
 }
 
-static t_instruction    *read_instructions(void)
+static t_instruction    *read_instructions(t_stack *a, t_stack *b)
 {
 	t_instruction    *head;
 	t_instruction    *current;
@@ -43,7 +43,7 @@ static t_instruction    *read_instructions(void)
 		{
 			free(line);
 			free_instructions(head);
-			return (NULL);
+			clean_exit(a, b);
 		}
 		if (!head)
 		{
@@ -71,18 +71,12 @@ void    process_operations(t_stack *a, t_stack *b)
 	t_instruction    *instructions;
 	t_instruction    *current;
 
-	instructions = read_instructions();
-	if (!instructions)
-		clean_exit(a, b);
+	instructions = read_instructions(a, b);
 	current = instructions;
 	while (current)
 	{
-		if (!execute_operation(a, b, current->operation))
-		{
-			free_instructions(instructions);
-			clean_exit(a, b);
-		}
-		current = current->next;
+		if (execute_operation(a, b, current->operation))
+			current = current->next;
 	}
 	free_instructions(instructions);
 }

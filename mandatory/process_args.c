@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 19:24:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 17:32:45 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/16 16:52:31 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 	int		*temp_array;
 	int		count;
 
-	if (ac < 2)
-		return (0);
 	str = join_args (ac, av);
 	if (!str)
 		return (0);

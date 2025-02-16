@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 14:16:04 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/16 16:40:12 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 
 	// atexit(f);
+	if (ac < 2)
+		return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
