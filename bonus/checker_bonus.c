@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/15 10:00:03 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/16 15:45:27 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,24 @@ static t_stack	*initialize_stacks(t_stack **stack_a, t_stack **stack_b)
 	return (*stack_a);
 }
 
-void	f(void)
-{
-	system ("leaks push_swap");
-}
+// void f()
+// {
+// 	system ("leaks checker");
+// }
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	atexit(f);
+	// atexit(f);
 	if (ac < 2)
-    	return (0);
+		return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
 		clean_exit(stack_a, stack_b);
 	process_operations(stack_a, stack_b);
-	if (is_sorted(stack_a) && stack_b->size == 0)
-		write(1, "OK\n",3);
-	else
-		write(1, "KO\n",3);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

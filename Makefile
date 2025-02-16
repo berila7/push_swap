@@ -58,10 +58,12 @@ $(CHECKER): $(BONUS_OBJS)
 clean:
 	make -C lib/libft clean
 	rm -f $(OBJS)
+	rm -f $(BONUS_OBJS)
 
 fclean: clean
 	make -C lib/libft fclean
 	rm -f $(NAME)
+	rm -f $(CHECKER)
 
 re: fclean all
 
