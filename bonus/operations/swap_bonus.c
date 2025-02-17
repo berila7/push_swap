@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   swap_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:53:27 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/14 09:52:09 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 11:56:22 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker_bonus.h"
 
+void	swap(t_stack *stack, char *msg)
+{
+	if (!stack || !stack->top || !stack->top->next)
+		return ;
+	ft_swap(&(stack->top->value), &(stack->top->next->value));
+	if (msg)
+		write(1, msg, 3);
+}
+
 void	sa(t_stack *stack_a)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (!stack_a || !stack_a->top || !stack_a->top->next)
-		return ;
-	first = stack_a->top;
-	second = first->next;
-	ft_swap(&(first->value), &(second->value));
+	swap(stack_a, "sa\n");
 }
 
 void	sb(t_stack *stack_b)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (!stack_b || !stack_b->top || !stack_b->top->next)
-		return ;
-	first = stack_b->top;
-	second = first->next;
-	ft_swap(&(first->value), &(second->value));
+	swap(stack_b, "sb\n");
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	swap(stack_a, NULL);
+	swap(stack_b, NULL);
+	write(1, "ss\n", 3);
 }

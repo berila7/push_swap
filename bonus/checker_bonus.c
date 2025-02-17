@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:19:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 11:54:43 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,17 @@ static t_stack	*initialize_stacks(t_stack **stack_a, t_stack **stack_b)
 	return (*stack_a);
 }
 
+// void	f(void)
+// {
+// 	system ("leaks checker");
+// }
+
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	// atexit(f);
 	if (ac < 2)
 		return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))

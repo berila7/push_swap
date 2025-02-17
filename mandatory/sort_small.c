@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:49:05 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:29:14 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 11:15:14 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,43 @@ static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b);
 }
 
+void	sort_three(t_stack *stack)
+{
+	int	top;
+	int	mid;
+	int	bot;
+
+	top = stack->top->value;
+	mid = stack->top->next->value;
+	bot = stack->top->next->next->value;
+	if (top > mid && mid < bot && top < bot)
+		sa(stack);
+	else if (top > mid && mid > bot)
+	{
+		sa(stack);
+		rra(stack);
+	}
+	else if (top > mid && mid < bot && top > bot)
+		ra(stack);
+	else if (top < mid && mid > bot && top < bot)
+	{
+		sa(stack);
+		ra(stack);
+	}
+	else if (top < mid && mid > bot && top > bot)
+		rra(stack);
+}
+
 void	sort_small(t_stack *stack_a, t_stack *stack_b)
 {
+	int pushes;
 	int	size;
 
 	size = stack_a->size;
-	if (size == 4)
-	{
+	pushes = size - 3;
+	while(pushes--)
 		push_min_to_b(stack_a, stack_b);
-		sort_three(stack_a);
+	sort_three(stack_a);
+	while (stack_b->size)
 		pa(stack_a, stack_b);
-	}
-	else if (size == 5)
-	{
-		push_min_to_b(stack_a, stack_b);
-		push_min_to_b(stack_a, stack_b);
-		sort_three(stack_a);
-		pa(stack_a, stack_b);
-		pa(stack_a, stack_b);
-	}
 }

@@ -1,37 +1,36 @@
-NAME	=	push_swap
-LIBFT	=	lib/libft/libft.a
-CHECKER =	checker
+NAME		=	push_swap
+LIBFT		=	lib/libft/libft.a
+CHECKER		=	checker
 
-CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
-INCLUDE	=	-I includes -I libft
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror
+INCLUDE		=	-I includes -I libft
 
-SRCS	=	mandatory/main.c \
-			mandatory/stack_utils.c \
-			mandatory/operations/swap.c \
-			mandatory/operations/push.c \
-			mandatory/operations/rotate.c \
-			mandatory/operations/reverse_rotate.c \
-			mandatory/input_validation.c \
-			mandatory/sort.c \
-			mandatory/sort_small.c \
-			mandatory/sort_larg.c \
-			mandatory/cleanup.c \
+SRCS		=	mandatory/main.c \
+				mandatory/stack_utils.c \
+				mandatory/operations/swap.c \
+				mandatory/operations/push.c \
+				mandatory/operations/rotate.c \
+				mandatory/operations/reverse_rotate.c \
+				mandatory/input_validation.c \
+				mandatory/sort_small.c \
+				mandatory/sort_larg.c \
+				mandatory/cleanup.c \
 
-BONUS_SRCS = bonus/checker_bonus.c \
-             bonus/stack_utils_bonus.c \
-             bonus/operations/swap_bonus.c \
-             bonus/operations/push_bonus.c \
-             bonus/operations/rotate_bonus.c \
-             bonus/operations/reverse_rotate_bonus.c \
-             bonus/input_validation_bonus.c \
-             bonus/cleanup_bonus.c \
-             bonus/process_operations_bonus.c \
-			 lib/get_next_line/get_next_line.c \
-			 lib/get_next_line/get_next_line_utils.c \
+BONUS_SRCS 	=	bonus/checker_bonus.c \
+            	bonus/stack_utils_bonus.c \
+            	bonus/operations/swap_bonus.c \
+            	bonus/operations/push_bonus.c \
+            	bonus/operations/rotate_bonus.c \
+            	bonus/operations/reverse_rotate_bonus.c \
+            	bonus/input_validation_bonus.c \
+            	bonus/cleanup_bonus.c \
+            	bonus/process_operations_bonus.c \
+				lib/get_next_line/get_next_line.c \
+				lib/get_next_line/get_next_line_utils.c \
 
-OBJS	=	$(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+OBJS		=	$(SRCS:.c=.o)
+BONUS_OBJS	=	$(BONUS_SRCS:.c=.o)
 
 all: $(LIBFT) $(NAME)
 bonus: $(LIBFT) $(CHECKER)
@@ -45,7 +44,7 @@ $(NAME): $(OBJS)
 $(CHECKER): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(CHECKER)
 
-%.o: %.c
+%.o: %.c 
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 %_bonus.o: %_bonus.c
