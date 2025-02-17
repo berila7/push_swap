@@ -47,7 +47,10 @@ $(NAME): $(OBJS)
 $(CHECKER): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(CHECKER)
 
-%.o: %.c $(LIBFT_DIR) includes/push_swap.h includes/checker_bonus.h
+mandatory/%.o: mandatory/%.c $(LIBFT) includes/push_swap.h includes/checker_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus/%_bonus.o: bonus/%_bonus.c $(LIBFT) includes/push_swap.h includes/checker_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
