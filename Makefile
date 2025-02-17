@@ -1,10 +1,13 @@
 NAME		=	push_swap
-LIBFT		=	lib/libft/libft.a
 CHECKER		=	checker
+
+LIBFT_DIR	=	lib/libft
+GNL_DIR		=	lib/get_next_line
+
+LIBFT		= 	$(LIBFT_DIR)/libft.a
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-INCLUDE		=	-I includes -I lib/libft
 
 SRCS		=	mandatory/main.c \
 				mandatory/stack_utils.c \
@@ -26,17 +29,17 @@ BONUS_SRCS 	=	bonus/checker_bonus.c \
             	bonus/input_validation_bonus.c \
             	bonus/cleanup_bonus.c \
             	bonus/process_operations_bonus.c \
-				lib/get_next_line/get_next_line.c \
-				lib/get_next_line/get_next_line_utils.c \
+				$(GNL_DIR)/get_next_line.c \
+				$(GNL_DIR)/get_next_line_utils.c \
 
 OBJS		=	$(SRCS:.c=.o)
 BONUS_OBJS	=	$(BONUS_SRCS:.c=.o)
 
-all: $(LIBFT) $(NAME)
-bonus: $(LIBFT) $(CHECKER)
+all: $(LIBFT_DIR) $(NAME)
+bonus: $(LIBFT_DIR) $(CHECKER)
 
-$(LIBFT):
-	@make -C lib/libft
+$(LIBFT_DIR):
+	@make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
@@ -44,19 +47,17 @@ $(NAME): $(OBJS)
 $(CHECKER): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(CHECKER)
 
-%.o: %.c 
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+%.o: %.c $(LIBFT_DIR) includes/push_swap.h includes/checker_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	make -C lib/libft clean
-	rm -f $(OBJS)
-	rm -f $(BONUS_OBJS)
+	make -C $(LIBFT_DIR) clean
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	make -C lib/libft fclean
-	rm -f $(NAME)
-	rm -f $(CHECKER)
+	make -C $(LIBFT_DIR) fclean
+	rm -f $(NAME) $(CHECKER)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: $(LIBFT_DIR)
