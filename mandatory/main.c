@@ -6,11 +6,12 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 16:40:12 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:11:53 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 
 static void	clean_exit(t_stack *stack_a, t_stack *stack_b)
 {
@@ -33,6 +34,20 @@ static t_stack	*initialize_stacks(t_stack **stack_a, t_stack **stack_b)
 	return (*stack_a);
 }
 
+void	sort_stack(t_stack *stack_a, t_stack *stack_b)
+{
+	int	size;
+
+	size = stack_a->size;
+	if (size == 2)
+		sort_two(stack_a);
+	else if (size == 3)
+		sort_three(stack_a);
+	else if (size <= 5)
+		sort_small(stack_a, stack_b);
+	else
+		sort_large(stack_a, stack_b);
+}
 // void	f(void)
 // {
 // 	system ("leaks push_swap");

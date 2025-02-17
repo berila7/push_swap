@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 15:32:59 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:02:32 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,12 @@ t_instruction    *new_instruction(char *operation);
 
 int		push_to_stack(t_stack *stack, int value);
 int		process_args(int ac, char **av, t_stack *stack_a);
-int		fill_stack(t_stack *stack_a, int *temp_array, int count);
 int		is_sorted(t_stack *stack);
 int		find_max_pos(t_stack *stack);
-int		convert_to_array(char **numbers, int **arr, int *count);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 
 /* Validation */
-int		has_duplicates(int *numbers, int size);
+int		has_duplicates_in_stack(t_stack *stack);
 int		is_within_int_limits(char *str);
 int		is_valid_number(char *str);
 int     is_valid_instruction(char *line);

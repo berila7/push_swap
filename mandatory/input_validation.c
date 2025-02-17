@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 16:59:20 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 09:55:45 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,44 @@ int	is_within_int_limits(char *str)
 	return (1);
 }
 
-int	has_duplicates(int *numbers, int size)
+int	has_duplicates_in_stack(t_stack *stack)
 {
-	int	i;
-	int	j;
+	t_node	*current;
+	t_node	*check;
 
-	if (!numbers || size <= 0)
-		return (0);
-	i = 0;
-	while (i < size - 1)
+	current = stack->top;
+	while (current)
 	{
-		j = i + 1;
-		while (j < size)
+		check = current->next;
+		while (check)
 		{
-			if (numbers[i] == numbers[j])
+			if (current->value == check->value)
 				return (1);
-			j++;
+			check = check->next;
 		}
-		i++;
+		current = current->next;
 	}
 	return (0);
+}
+int	process_args(int ac, char **av, t_stack *stack_a)
+{
+	int	i;
+	int	num;
+
+	if (ac < 2)
+		return (0);
+	i = ac - 1;
+	while (i > 0)
+	{
+		if (!is_valid_number(av[i]) 
+			|| !is_within_int_limits(av[i]))
+			return (0);
+		num = ft_atoi(av[i]);
+		if (!push_to_stack(stack_a, num))
+			return (0);
+		i--;
+	}
+	if (has_duplicates_in_stack(stack_a))
+		return (0);
+	return (1);
 }
