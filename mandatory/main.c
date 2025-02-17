@@ -6,12 +6,11 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:11:53 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:28:17 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 static void	clean_exit(t_stack *stack_a, t_stack *stack_b)
 {
@@ -48,17 +47,18 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	else
 		sort_large(stack_a, stack_b);
 }
-// void	f(void)
-// {
-// 	system ("leaks push_swap");
-// }
+
+void	f(void)
+{
+	system ("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	// atexit(f);
+	atexit(f);
 	if (ac < 2)
 		return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))

@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 16:39:55 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:19:37 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	main(int ac, char **av)
 		clean_exit(stack_a, stack_b);
 	process_operations(stack_a, stack_b);
 	if (is_sorted(stack_a) && stack_b->size == 0)
-		write(1, "OK\n",3);
+		write(1, "OK\n", 3);
 	else
-		write(1, "KO\n",3);
+		write(1, "KO\n", 3);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

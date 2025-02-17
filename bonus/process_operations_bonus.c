@@ -6,15 +6,15 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 18:01:27 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 16:09:05 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:31:08 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
 
-t_instruction    *new_instruction(char *operation)
+t_instruction	*new_instruction(char *operation)
 {
-	t_instruction    *new;
+	t_instruction	*new;
 
 	new = malloc(sizeof(t_instruction));
 	if (!new)
@@ -29,11 +29,11 @@ t_instruction    *new_instruction(char *operation)
 	return (new);
 }
 
-static t_instruction    *read_instructions(t_stack *a, t_stack *b)
+static t_instruction	*read_instructions(t_stack *a, t_stack *b)
 {
-	t_instruction    *head;
-	t_instruction    *current;
-	char            *line;
+	t_instruction	*head;
+	t_instruction	*current;
+	char			*line;
 
 	head = NULL;
 	current = NULL;
@@ -66,10 +66,10 @@ static t_instruction    *read_instructions(t_stack *a, t_stack *b)
 	return (head);
 }
 
-void    process_operations(t_stack *a, t_stack *b)
+void	process_operations(t_stack *a, t_stack *b)
 {
-	t_instruction    *instructions;
-	t_instruction    *current;
+	t_instruction	*instructions;
+	t_instruction	*current;
 
 	instructions = read_instructions(a, b);
 	current = instructions;
@@ -81,7 +81,7 @@ void    process_operations(t_stack *a, t_stack *b)
 	free_instructions(instructions);
 }
 
-int    execute_operation(t_stack *a, t_stack *b, char *op)
+int	execute_operation(t_stack *a, t_stack *b, char *op)
 {
 	if (ft_strncmp(op, "sa\n", 3) == 0)
 		sa(a);
@@ -109,4 +109,3 @@ int    execute_operation(t_stack *a, t_stack *b, char *op)
 		return (0);
 	return (1);
 }
-

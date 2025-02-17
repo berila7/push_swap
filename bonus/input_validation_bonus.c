@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 09:58:52 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:24:06 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,21 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-int    is_valid_instruction(char *line)
+int	is_valid_instruction(char *line)
 {
 	if (!line)
 		return (0);
-	return (ft_strncmp(line, "sa\n", 3) == 0 || ft_strncmp(line, "sb\n", 3) == 0 ||
-			ft_strncmp(line, "ss\n", 3) == 0 || ft_strncmp(line, "pa\n", 3) == 0 ||
-			ft_strncmp(line, "pb\n", 3) == 0 || ft_strncmp(line, "ra\n", 3) == 0 ||
-			ft_strncmp(line, "rb\n", 3) == 0 || ft_strncmp(line, "rr\n", 3) == 0 ||
-			ft_strncmp(line, "rra\n", 4) == 0 || ft_strncmp(line, "rrb\n", 4) == 0 ||
-			ft_strncmp(line, "rrr\n", 4) == 0);
+	return (ft_strncmp(line, "sa\n", 3) == 0
+		|| ft_strncmp(line, "sb\n", 3) == 0
+		|| ft_strncmp(line, "ss\n", 3) == 0
+		|| ft_strncmp(line, "pa\n", 3) == 0
+		|| ft_strncmp(line, "pb\n", 3) == 0
+		|| ft_strncmp(line, "ra\n", 3) == 0
+		|| ft_strncmp(line, "rb\n", 3) == 0
+		|| ft_strncmp(line, "rr\n", 3) == 0
+		|| ft_strncmp(line, "rra\n", 4) == 0
+		|| ft_strncmp(line, "rrb\n", 4) == 0
+		|| ft_strncmp(line, "rrr\n", 4) == 0);
 }
 
 int	is_within_int_limits(char *str)
@@ -75,6 +80,7 @@ int	has_duplicates_in_stack(t_stack *stack)
 	}
 	return (0);
 }
+
 int	process_args(int ac, char **av, t_stack *stack_a)
 {
 	int	i;
@@ -85,7 +91,7 @@ int	process_args(int ac, char **av, t_stack *stack_a)
 	i = ac - 1;
 	while (i > 0)
 	{
-		if (!is_valid_number(av[i]) 
+		if (!is_valid_number(av[i])
 			|| !is_within_int_limits(av[i]))
 			return (0);
 		num = ft_atoi(av[i]);

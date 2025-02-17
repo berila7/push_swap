@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:33:19 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:13:41 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:28:56 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ void	sort_three(t_stack *stack)
 	else if (a < b && b > c && a > c)
 		rra(stack);
 }
-

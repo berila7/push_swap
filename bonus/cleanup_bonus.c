@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:07:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/16 15:45:33 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:20:09 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	free_split(char	**numbers)
 	free(numbers);
 }
 
-void    free_instructions(t_instruction *head)
+void	free_instructions(t_instruction *head)
 {
-	t_instruction    *temp;
+	t_instruction	*temp;
 
 	while (head)
 	{

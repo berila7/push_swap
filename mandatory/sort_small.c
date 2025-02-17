@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:49:05 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:13:45 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:29:14 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ static void	push_min_to_b(t_stack *stack_a, t_stack *stack_b)
 	}
 	pb(stack_a, stack_b);
 }
-
-
 
 void	sort_small(t_stack *stack_a, t_stack *stack_b)
 {
