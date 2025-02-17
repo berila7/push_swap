@@ -4,7 +4,7 @@ CHECKER		=	checker
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-INCLUDE		=	-I includes -I libft
+INCLUDE		=	-I includes -I lib/libft
 
 SRCS		=	mandatory/main.c \
 				mandatory/stack_utils.c \
@@ -45,9 +45,6 @@ $(CHECKER): $(BONUS_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT) -o $(CHECKER)
 
 %.o: %.c 
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-%_bonus.o: %_bonus.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
