@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 18:01:27 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:31:08 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 18:01:47 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,27 @@ t_instruction	*new_instruction(char *operation)
 	return (new);
 }
 
+static int	add_instruction(t_instruction **head, t_instruction **current,
+		char *line)
+{
+	t_instruction	*new;
+
+	new = new_instruction(line);
+	if (!new)
+		return (0);
+	if (!*head)
+	{
+		*head = new;
+		*current = new;
+	}
+	else
+	{
+		(*current)->next = new;
+		*current = new;
+	}
+	return (1);
+}
+
 static t_instruction	*read_instructions(t_stack *a, t_stack *b)
 {
 	t_instruction	*head;
@@ -37,7 +58,8 @@ static t_instruction	*read_instructions(t_stack *a, t_stack *b)
 
 	head = NULL;
 	current = NULL;
-	while ((line = get_next_line(0)))
+	line = get_next_line(0);
+	while (line)
 	{
 		if (!is_valid_instruction(line))
 		{
@@ -45,23 +67,14 @@ static t_instruction	*read_instructions(t_stack *a, t_stack *b)
 			free_instructions(head);
 			clean_exit(a, b);
 		}
-		if (!head)
-		{
-			head = new_instruction(line);
-			current = head;
-		}
-		else
-		{
-			current->next = new_instruction(line);
-			current = current->next;
-		}
-		if (!current)
+		if (!add_instruction(&head, &current, line))
 		{
 			free(line);
 			free_instructions(head);
 			return (NULL);
 		}
 		free(line);
+		line = get_next_line(0);
 	}
 	return (head);
 }
@@ -75,8 +88,9 @@ void	process_operations(t_stack *a, t_stack *b)
 	current = instructions;
 	while (current)
 	{
-		if (execute_operation(a, b, current->operation))
-			current = current->next;
+		if (!execute_operation(a, b, current->operation))
+			break ;
+		current = current->next;
 	}
 	free_instructions(instructions);
 }

@@ -6,13 +6,13 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:56:18 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 11:55:59 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 17:50:21 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker_bonus.h"
 
-void	rrotate(t_stack *stack, char *msg)
+void	rrotate(t_stack *stack)
 {
 	t_node	*last;
 	t_node	*second_to_last;
@@ -26,23 +26,20 @@ void	rrotate(t_stack *stack, char *msg)
 	second_to_last->next = NULL;
 	last->next = stack->top;
 	stack->top = last;
-	if (msg)
-		write(1, msg, 4);
 }
 
 void	rra(t_stack *stack_a)
 {
-	rrotate(stack_a, "rra\n");
+	rrotate(stack_a);
 }
 
 void	rrb(t_stack *stack_b)
 {
-	rrotate(stack_b, "rrb\n");
+	rrotate(stack_b);
 }
 
 void	rrr(t_stack *stack_a, t_stack *stack_b)
 {
-	rrotate(stack_a, NULL);
-	rrotate(stack_b, NULL);
-	write(1, "rrr\n", 4);
+	rrotate(stack_a);
+	rrotate(stack_b);
 }
