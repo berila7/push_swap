@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:49:05 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 11:15:14 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 15:44:57 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ void	sort_three(t_stack *stack)
 
 void	sort_small(t_stack *stack_a, t_stack *stack_b)
 {
-	int pushes;
+	int	pushes;
 	int	size;
 
 	size = stack_a->size;
 	pushes = size - 3;
-	while(pushes--)
+	while (pushes--)
 		push_min_to_b(stack_a, stack_b);
 	sort_three(stack_a);
 	while (stack_b->size)

@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 15:32:13 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 15:49:54 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int				execute_operation(t_stack *a, t_stack *b, char *op);
 void			free_instructions(t_instruction *head);
 
 void			free_stack(t_stack *stack);
-void			free_split(char	**numbers);
 void			clean_exit(t_stack *stack_a, t_stack *stack_b);
 
 void			sa(t_stack *stack_a);

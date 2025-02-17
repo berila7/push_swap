@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:07:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:20:09 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 15:49:58 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ void	free_stack(t_stack *stack)
 		current = next;
 	}
 	free(stack);
-}
-
-void	free_split(char	**numbers)
-{
-	int	i;
-
-	i = 0;
-	while (numbers[i])
-		free(numbers[i++]);
-	free(numbers);
 }
 
 void	free_instructions(t_instruction *head)
