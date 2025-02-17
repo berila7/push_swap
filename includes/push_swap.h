@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:11:12 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:59:08 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <limits.h>
 # include "../lib/libft/libft.h"
 
@@ -57,10 +56,8 @@ int		is_sorted(t_stack *stack);
 
 void	free_stack(t_stack *stack);
 void	sort_stack(t_stack *stack_a, t_stack *stack_b);
-void	sort_two(t_stack *stack);
 void	sort_three(t_stack *stack);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *a, t_stack *b);
-void	free_split(char	**numbers);
 
 #endif

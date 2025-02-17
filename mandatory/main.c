@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:28:17 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:53:19 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 
 	size = stack_a->size;
 	if (size == 2)
-		sort_two(stack_a);
+		sa(stack_a);
 	else if (size == 3)
 		sort_three(stack_a);
 	else if (size <= 5)

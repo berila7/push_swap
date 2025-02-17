@@ -6,41 +6,35 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:33:19 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 10:28:56 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/17 10:58:43 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_two(t_stack *stack)
-{
-	if (stack->top->value > stack->top->next->value)
-		sa(stack);
-}
-
 void	sort_three(t_stack *stack)
 {
-	int	a;
-	int	b;
-	int	c;
+	int	top;
+	int	mid;
+	int	bot;
 
-	a = stack->top->value;
-	b = stack->top->next->value;
-	c = stack->top->next->next->value;
-	if (a > b && b < c && a < c)
+	top = stack->top->value;
+	mid = stack->top->next->value;
+	bot = stack->top->next->next->value;
+	if (top > mid && mid < bot && top < bot)
 		sa(stack);
-	else if (a > b && b > c)
+	else if (top > mid && mid > bot)
 	{
 		sa(stack);
 		rra(stack);
 	}
-	else if (a > b && b < c && a > c)
+	else if (top > mid && mid < bot && top > bot)
 		ra(stack);
-	else if (a < b && b > c && a < c)
+	else if (top < mid && mid > bot && top < bot)
 	{
 		sa(stack);
 		ra(stack);
 	}
-	else if (a < b && b > c && a > c)
+	else if (top < mid && mid > bot && top > bot)
 		rra(stack);
 }
