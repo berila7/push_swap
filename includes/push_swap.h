@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 11:42:18 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 13:23:44 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		push_to_stack(t_stack *stack, int value);
 int		is_valid_number(char *str);
 int		find_max_pos(t_stack *stack);
 int		has_duplicates_in_stack(t_stack *stack);
-int		process_args(int ac, char **av, t_stack *stack_a);
+int		process_args(char **args, t_stack *stack_a);
 int		is_sorted(t_stack *stack);
 
 void	free_stack(t_stack *stack);
