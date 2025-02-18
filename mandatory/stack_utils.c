@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:38 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 13:14:30 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 14:24:44 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,17 @@ int	push_to_stack(t_stack *stack, int value)
 	new_node = create_new_node(value);
 	if (!new_node)
 		return (0);
-	// ft_memset(new_node, 0, sizeof(t_node));
 	if (!stack->top)
-    {
-        stack->top = new_node;
-    }
-    else
-    {
-        current = stack->top;
-        while (current->next)
-            current = current->next;
-        current->next = new_node;
-    }
+	{
+		stack->top = new_node;
+	}
+	else
+	{
+		current = stack->top;
+		while (current->next)
+			current = current->next;
+		current->next = new_node;
+	}
 	stack->size++;
 	return (1);
 }

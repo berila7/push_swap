@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 11:08:04 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 14:08:53 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,31 @@ int	has_duplicates_in_stack(t_stack *stack)
 	return (0);
 }
 
-int	process_args(int ac, char **av, t_stack *stack_a)
+int	process_args(char **args, t_stack *stack_a)
 {
-	int	i;
-	int	num;
+	int		i;
+	int		num;
+	int		j;
+	char	**nums;
 
-	i = ac - 1;
-	while (i > 0)
+	i = 0;
+	while (args[i])
 	{
-		if (!is_valid_number(av[i]) || !is_within_int_limits(av[i]))
-			return (0);
-		num = ft_atoi(av[i]);
-		if (!push_to_stack(stack_a, num))
-			return (0);
-		i--;
+		nums = ft_split(args[i], ' ');
+		if (!nums || !nums[0])
+			return (free_split(nums), 0);
+		j = 0;
+		while (nums[j])
+		{
+			if (!is_valid_number(nums[j]) || !is_within_int_limits(nums[j]))
+				return (free_split(nums), 0);
+			num = ft_atoi(nums[j]);
+			if (!push_to_stack(stack_a, (int)num))
+				return (free_split(nums), 0);
+			j++;
+		}
+		free_split(nums);
+		i++;
 	}
-	if (has_duplicates_in_stack(stack_a))
-		return (0);
 	return (1);
 }

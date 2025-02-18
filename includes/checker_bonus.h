@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 11:02:40 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 14:10:07 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_node			*create_new_node(int value);
 t_instruction	*new_instruction(char *operation);
 
 int				push_to_stack(t_stack *stack, int value);
-int				process_args(int ac, char **av, t_stack *stack_a);
+int				process_args(char **args, t_stack *stack_a);
 int				is_sorted(t_stack *stack);
 int				find_max_pos(t_stack *stack);
 void			sort_stack(t_stack *stack_a, t_stack *stack_b);
@@ -72,6 +72,6 @@ void			rr(t_stack	*stack_a, t_stack *stack_b);
 void			rra(t_stack *stack_a);
 void			rrb(t_stack *stack_b);
 void			rrr(t_stack *stack_a, t_stack *stack_b);
-void    print_stack(t_stack *stack, char *name);
+void			free_split(char **split);
 
 #endif

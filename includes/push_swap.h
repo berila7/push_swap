@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 13:23:44 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 14:09:58 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b);
 void	sort_three(t_stack *stack);
 void	sort_small(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *a, t_stack *b);
-void    print_stack(t_stack *stack, char *name);
 void	free_split(char **split);
 
 #endif

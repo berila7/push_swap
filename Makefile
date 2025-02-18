@@ -27,7 +27,6 @@ BONUS_SRCS 	=	bonus/checker_bonus.c \
             	bonus/operations/reverse_rotate_bonus.c \
             	bonus/input_validation_bonus.c \
             	bonus/cleanup_bonus.c \
-            	bonus/debug_utils.c \
             	bonus/process_operations_bonus.c \
 				$(GNL_DIR)/get_next_line.c \
 				$(GNL_DIR)/get_next_line_utils.c \
