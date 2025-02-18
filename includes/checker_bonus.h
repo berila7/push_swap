@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:48 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/17 15:49:54 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 11:02:40 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void			rr(t_stack	*stack_a, t_stack *stack_b);
 void			rra(t_stack *stack_a);
 void			rrb(t_stack *stack_b);
 void			rrr(t_stack *stack_a, t_stack *stack_b);
+void    print_stack(t_stack *stack, char *name);
 
 #endif
