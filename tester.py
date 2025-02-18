@@ -46,7 +46,7 @@ def run_checker(args, instructions):
 		if os_type == "linux":
 			command = ['./checker_linux'] + args
 		elif os_type == "darwin":  # macOS
-			command = ['./checker_mac'] + args
+			command = ['./checker_Mac'] + args
 		else:
 			print(f"{RED}Unsupported OS checker: {os_type}.\nExiting...{RESET}")
 			sys.exit(1)
