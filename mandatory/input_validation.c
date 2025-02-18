@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 11:49:45 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 11:55:20 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,3 @@ int	has_duplicates_in_stack(t_stack *stack)
 	return (0);
 }
 
-int	process_args(int ac, char **av, t_stack *stack_a)
-{
-	int	i;
-	int	num;
-
-	i = ac - 1;
-	while (i > 0)
-	{
-		if (!is_valid_number(av[i]) || !is_within_int_limits(av[i]))
-			return (0);
-		num = ft_atoi(av[i]);
-		if (!push_to_stack(stack_a, num))
-			return (0);
-		i--;
-	}
-	if (has_duplicates_in_stack(stack_a))
-		return (0);
-	return (1);
-}
