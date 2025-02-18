@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 11:02:17 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 11:14:32 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,17 @@ int	main(int ac, char **av)
 		clean_exit(stack_a, stack_b);
 	if (!process_args(ac, av, stack_a))
 		clean_exit(stack_a, stack_b);
-	print_stack(stack_a, "Checker Stack A after initialization");
+	print_stack(stack_a, "Initial checker stack");
+	char *operation;
+    printf("Processing operations:\n");
+    while ((operation = get_next_line(0)))
+    {
+        printf("Received operation: %s", operation);
+        // ... process operation ...
+        print_stack(stack_a, "Stack A after operation");
+        print_stack(stack_b, "Stack B after operation");
+        free(operation);
+    }
 	process_operations(stack_a, stack_b);
 	if (is_sorted(stack_a) && stack_b->size == 0)
 		write(1, "OK\n", 3);
