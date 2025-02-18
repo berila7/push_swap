@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:12:41 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 16:43:26 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 16:53:28 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 		sort_large(stack_a, stack_b);
 }
 
-// void	f(void)
-// {
-// 	system ("leaks push_swap");
-// }
+void	f(void)
+{
+	system ("leaks push_swap");
+}
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	// atexit(f);
+	atexit(f);
 	if (ac == 1)
 		return (0);
 	if (!initialize_stacks(&stack_a, &stack_b))

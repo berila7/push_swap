@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 13:55:12 by mberila           #+#    #+#             */
-/*   Updated: 2025/02/18 14:24:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/02/18 17:35:14 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	has_duplicates_in_stack(t_stack *stack)
 int	process_args(char **args, t_stack *stack_a)
 {
 	int		i;
-	int		num;
 	int		j;
 	char	**nums;
 
@@ -82,8 +81,7 @@ int	process_args(char **args, t_stack *stack_a)
 		{
 			if (!is_valid_number(nums[j]) || !is_within_int_limits(nums[j]))
 				return (free_split(nums), 0);
-			num = ft_atoi(nums[j]);
-			if (!push_to_stack(stack_a, (int)num))
+			if (!push_to_stack(stack_a, ft_atoi(nums[j])))
 				return (free_split(nums), 0);
 			j++;
 		}
