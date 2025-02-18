@@ -18,6 +18,7 @@ SRCS		=	mandatory/main.c \
 				mandatory/sort_small.c \
 				mandatory/sort_larg.c \
 				mandatory/cleanup.c \
+				mandatory/debug_utils.c \
 
 BONUS_SRCS 	=	bonus/checker_bonus.c \
             	bonus/stack_utils_bonus.c \
